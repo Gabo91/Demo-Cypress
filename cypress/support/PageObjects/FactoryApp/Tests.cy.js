@@ -17,7 +17,7 @@ class Test{
     }
     
     SeleccionarUsuario(){
-        let tiempo=1000
+        let tiempo=1500
         cy.fixture("datos").then(testdata=>{
             testdata.forEach(data=>{
                 const nombre=data.Usuario
@@ -35,7 +35,7 @@ class Test{
         })
     }
     AgregarSolicitud(){
-        let tiempo=1000
+        let tiempo=1500
         cy.get(':nth-child(3) > .text-dark').should('be.visible').click()
         cy.wait(tiempo)
         cy.get('div > .btn').should('be.visible').click()
@@ -53,7 +53,7 @@ class Test{
         })
     }
     EditarTodosSolicitudes(matPrima,cantidad){
-        let tiempo=1000
+        let tiempo=1500
         //creamos un arreglo
         const datos=[]
         //Ingresamos al menu de solicitudes
@@ -101,7 +101,7 @@ class Test{
             })
     }
     EditarPrimeraSolicitud(matPrima,cantidad){
-        let tiempo=1000
+        let tiempo=1500
         const datos=[]
         cy.get(':nth-child(3) > .text-dark').should('be.visible').click()
         cy.wait(tiempo)
@@ -132,7 +132,7 @@ class Test{
             })
     }
     EliminarUltimoMaterialAgregado(){
-        let tiempo=1000
+        let tiempo=1500
         const datos=[]
         const datos2=[]
         cy.get(':nth-child(3) > .text-dark').click()
@@ -180,7 +180,7 @@ class Test{
             })
     }
     PublicarTodaSolicitud(){
-        let tiempo=1000
+        let tiempo=1500
         const datos=[]
         
         cy.get(':nth-child(3) > .text-dark').click()
@@ -222,7 +222,7 @@ class Test{
             })    
     }
     PublicarPrimeraSolicitud(){
-        let tiempo=1000
+        let tiempo=1500
         const datos=[]
         cy.get(':nth-child(3) > .text-dark').click()
         cy.wait(tiempo)
@@ -237,11 +237,12 @@ class Test{
                             cy.get(':nth-child(2) > .swal-button').click()
                             cy.wait(tiempo)
                             cy.get('.swal-text').should('have.text','Solicitud publicada correctamente')
+                            cy.wait(tiempo)
             })
     }
     
     EliminarPrimeraSolicitud(){
-        let tiempo=1000
+        let tiempo=1500
         const datos=[]
         cy.get(':nth-child(3) > .text-dark').click()
         cy.wait(tiempo)
@@ -254,6 +255,7 @@ class Test{
                     const datos_aux=$el.text()
                     cy.log(datos_aux)
                     if (datos_aux.includes('Borrador')) {
+                        
                         cy.get('#root > div > div > div > table > tbody >tr >td > button').first().click()
                         cy.wait(tiempo)
                         cy.get('.btn-danger').should('be.visible').click()
@@ -272,7 +274,7 @@ class Test{
             })
     }
     EliminarUltimaSolicitud(){
-        let tiempo=1000
+        let tiempo=1500
         const datos=[]
         cy.get(':nth-child(3) > .text-dark').click()
         cy.wait(tiempo)
@@ -302,7 +304,7 @@ class Test{
             })
     }
     EliminarPorId(){
-        let tiempo=1000
+        let tiempo=1500
         cy.fixture("Ids").then(inf => {
             inf.forEach(data=>{
                 const id= data.Id
@@ -314,7 +316,7 @@ class Test{
                 cy.wait(tiempo)
                 cy.get(':nth-child(2) > .swal-button').should('be.visible')
                 cy.wait(tiempo)
-                cy.get(':nth-child(1) > .swal-button').click()
+                cy.get(':nth-child(2) > .swal-button').click()
                 cy.wait(tiempo)
                 cy.get(':nth-child(3) > .text-dark').click()
             })
